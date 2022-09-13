@@ -46,7 +46,7 @@ CMD ["python","app.py"]
 
 Before we build an image for the application we just created, let's first understand what the lines of code in the Docker file above mean and what role they play.
 
-The below code should be the first line of every Dockerfile – it tells the Docker builder what syntax to use while parsing the Dockerfile and the location of the Docker syntax file. (Source)
+The below code should be the first line of every Dockerfile – it tells the Docker builder what syntax to use while parsing the Dockerfile and the location of the Docker syntax file.
 
 # syntax=docker/dockerfile:1
 While it is possible to create our own base images, there is no need to go that far because Docker allows us to inherit existing images. The following line tells Docker which base image to use — in this case, a Python image.
@@ -73,23 +73,24 @@ This line specifically instructs Docker to run our Flask app. Then it instructs 
 CMD ["python","app.py"]
 Since we had,
 
-if __name__ == "__main__":
-    app.run(debug=True)
+`if __name__ == "__main__":
+    app.run(debug=True)`
     
-Because we had the "if" statement in our application file, this will be true if we run this module as a standalone program. As a result, it can function as a module imported by another program or as a standalone program, but it will only execute the code in the if statement if run as a program. ADVERTISEMENT
+Because we had the "if" statement in our application file, this will be true if we run this module as a standalone program. As a result, it can function as a module imported by another program or as a standalone program, but it will only execute the code in the if statement if run as a program.
 
 # How to Build a Docker Image
 After that, all that remains is to build our image. Using docker build, we can now enlist Docker's help in building the image. You can combine the build command with other tags, such as the "--tag" flag, to specify the image name.
 
 docker build --tag python-docker .
-How to run an image as a container
+
+# How to run an image as a container
 Running an image inside a container is as simple as building one. But before we do so, we'd like to see what other images are available in our environment. To view images from the command line, execute the following:
 
-docker images
+`docker images`
 If the above command finds any images, the output should look something like this:
 
-REPOSITORY      TAG       IMAGE ID       CREATED             SIZE
-python          3.9.2     587b1bc803b3   7 months ago        885MB
+`REPOSITORY      TAG       IMAGE ID       CREATED             SIZE
+python          3.9.2     587b1bc803b3   7 months ago        885MB`
 
 Now we can choose which image to run. Using the docker run command, we can run an image by passing the image's name as a parameter.
 
@@ -112,14 +113,16 @@ We can use the following command to see which containers are currently running:
 docker ps
 The output is as follows:
 
-CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                    NAMES
+`CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                    NAMES`
 
 To stop the currently running container, we execute this command:
 
-docker stop <container-name>
+`docker stop <container-name>`
+ 
 Another useful command to have when working with Docker is this one:
 
-docker container prune
+`docker container prune`
+ 
 It removes unused resources, freeing up space and keeping your system clean.
 
 And that's it!
