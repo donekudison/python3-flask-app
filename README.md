@@ -81,7 +81,7 @@ Because we had the "if" statement in our application file, this will be true if 
 # How to Build a Docker Image
 After that, all that remains is to build our image. Using docker build, we can now enlist Docker's help in building the image. You can combine the build command with other tags, such as the "--tag" flag, to specify the image name.
 
-docker build --tag python-docker .
+docker build --tag python3-flask-app .
 
 # How to run an image as a container
 Running an image inside a container is as simple as building one. But before we do so, we'd like to see what other images are available in our environment. To view images from the command line, execute the following:
@@ -94,7 +94,8 @@ python          3.9.2     587b1bc803b3   7 months ago        885MB`
 
 Now we can choose which image to run. Using the docker run command, we can run an image by passing the image's name as a parameter.
 
-docker run
+`docker run`
+
 While running the above command, you'll notice that on the command line it indicates that the application is running. But when you enter http://localhost:5000/ on the browser, the greeting will be:
 
 This site can’t be reached localhost refused to connect.
@@ -104,13 +105,13 @@ The best solution is to run the image in detached mode. Because we need to view 
 
 The docker run command will now be formatted as follows:
 
-docker run -d -p 5000:5000 python-docker
-This time, we'll see the following output if we run it in detached mode and visit localhost at port 5000:
+`docker run -d -p 5000:5000 python3-flask-app`
 
-d
+This time, we'll see the following output if we run it in detached mode and visit localhost at port 5000:5000
+
 We can use the following command to see which containers are currently running:
 
-docker ps
+`docker ps`
 The output is as follows:
 
 `CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                    NAMES`
